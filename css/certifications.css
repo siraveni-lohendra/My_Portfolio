@@ -1,0 +1,740 @@
+/* =========================================================
+   CERTIFICATIONS PAGE
+========================================================= */
+
+
+/* =========================================================
+   CERTIFICATION FILTER BAR
+========================================================= */
+
+.cert-category-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 42px auto 35px;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 10px 18px;
+
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 10px;
+
+    background: rgba(15, 23, 42, 0.75);
+
+    color: #94a3b8;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.category-item span {
+    color: #64748b;
+    font-size: 9px;
+}
+
+.category-item:hover {
+    color: #e2e8f0;
+    border-color: rgba(96, 165, 250, 0.35);
+}
+
+.category-item.active {
+    color: #ffffff;
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(96, 165, 250, 0.45);
+}
+
+.category-item.active span {
+    color: #60a5fa;
+}
+
+
+/* =========================================================
+   CERTIFICATE GRID
+========================================================= */
+
+.certificates-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   CERTIFICATE CARD
+========================================================= */
+
+.certificate-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 22px;
+
+    border: 1px solid rgba(
+        96,
+        165,
+        250,
+        0.18
+    );
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 41, 59, 0.72),
+            rgba(15, 23, 42, 0.82)
+        );
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.certificate-card:hover {
+    border-color:
+        rgba(96, 165, 250, 0.35);
+
+    transform:
+        translateY(-2px);
+}
+
+.certificate-card.is-open {
+    border-color:
+        rgba(96, 165, 250, 0.45);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(
+            59,
+            130,
+            246,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   HIDDEN CARDS
+========================================================= */
+
+.certificate-card.filter-hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   CERTIFICATE TOP
+========================================================= */
+
+.certificate-top {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   CERTIFICATE ICON
+========================================================= */
+
+.certificate-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(59, 130, 246, 0.12);
+
+    border:
+        1px solid rgba(
+            96,
+            165,
+            250,
+            0.18
+        );
+
+    color: #60a5fa;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CERTIFICATE TYPE
+========================================================= */
+
+.certificate-type {
+    padding: 5px 8px;
+
+    border:
+        1px solid rgba(
+            148,
+            163,
+            184,
+            0.15
+        );
+
+    border-radius: 7px;
+
+    color: #64748b;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   CERTIFICATE TITLE
+========================================================= */
+
+.certificate-card h3 {
+    margin: 0 0 9px;
+
+    color: #e2e8f0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ISSUER
+========================================================= */
+
+.certificate-issuer {
+    margin: 0 0 5px;
+
+    color: #60a5fa;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.certificate-date {
+    margin-bottom: 14px;
+
+    color: #64748b;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.certificate-description {
+    margin: 0 0 18px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   VIEW CERTIFICATE BUTTON
+========================================================= */
+
+.view-certificate-btn {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border:
+        1px solid rgba(
+            96,
+            165,
+            250,
+            0.25
+        );
+
+    border-radius: 9px;
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+    color: #93c5fd;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.view-certificate-btn:hover {
+    background:
+        rgba(59, 130, 246, 0.15);
+
+    border-color:
+        rgba(96, 165, 250, 0.45);
+
+    color: #dbeafe;
+}
+
+.view-certificate-btn.active {
+    background:
+        rgba(239, 68, 68, 0.08);
+
+    border-color:
+        rgba(248, 113, 113, 0.25);
+
+    color: #fca5a5;
+}
+
+
+/* =========================================================
+   SINGLE CERTIFICATE PREVIEW
+
+   IMPORTANT:
+   Preview is INSIDE the certificate card.
+   Width is exactly 100% of the card.
+========================================================= */
+
+.certificate-preview {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border:
+        1px solid rgba(
+            96,
+            165,
+            250,
+            0.25
+        );
+
+    border-radius: 12px;
+
+    background:
+        rgba(2, 6, 23, 0.97);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30),
+        0 0 25px rgba(
+            59,
+            130,
+            246,
+            0.06
+        );
+
+    animation:
+        certificatePreviewOpen
+        0.3s ease;
+}
+
+
+/* =========================================================
+   PREVIEW ANIMATION
+========================================================= */
+
+@keyframes certificatePreviewOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   PREVIEW HEADER
+========================================================= */
+
+.preview-header {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   PREVIEW SMALL LABEL
+========================================================= */
+
+.preview-header span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #60a5fa;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   PREVIEW TITLE
+========================================================= */
+
+.preview-header h4 {
+    margin: 0;
+
+    color: #e2e8f0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.preview-close {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid rgba(
+            148,
+            163,
+            184,
+            0.15
+        );
+
+    border-radius: 7px;
+
+    background:
+        rgba(30, 41, 59, 0.8);
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.preview-close:hover {
+    background:
+        rgba(239, 68, 68, 0.12);
+
+    color: #fca5a5;
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* =========================================================
+   PDF WRAPPER
+
+   EXACT SAME WIDTH AS CARD
+========================================================= */
+
+.preview-frame-wrapper {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   PDF IFRAME
+
+   ONE CERTIFICATE ONLY
+========================================================= */
+
+.certificate-frame {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 500px;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   PREVIEW FOOTER
+========================================================= */
+
+.preview-footer {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding:
+        10px 2px 0;
+}
+
+
+/* =========================================================
+   FOOTER TEXT
+========================================================= */
+
+.preview-footer span {
+    color: #64748b;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   OPEN FULL CERTIFICATE
+========================================================= */
+
+.open-certificate {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #60a5fa;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease;
+}
+
+.open-certificate:hover {
+    color: #bfdbfe;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .certificates-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .certificate-card {
+        padding: 18px;
+    }
+
+    .certificate-preview {
+        padding: 10px;
+    }
+
+    .certificate-frame {
+        height: 430px;
+    }
+
+    .preview-footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .category-item {
+        padding: 9px 13px;
+    }
+
+}
+
+
+/* =========================================================
+   DIFFERENT START TIMES
+   Makes the cards feel more natural
+========================================================= */
+
+.certificate-card:nth-child(2)::after {
+    animation-delay: 0.4s;
+}
+
+.certificate-card:nth-child(3)::after {
+    animation-delay: 0.8s;
+}
+
+.certificate-card:nth-child(4)::after {
+    animation-delay: 1.2s;
+}
+
+.certificate-card:nth-child(5)::after {
+    animation-delay: 1.6s;
+}
+
+.certificate-card:nth-child(6)::after {
+    animation-delay: 2s;
+}
+
+.certificate-card:nth-child(7)::after {
+    animation-delay: 2.4s;
+}
+
+.certificate-card:nth-child(8)::after {
+    animation-delay: 2.8s;
+}
+/* =========================================
+   CERTIFICATIONS PAGE CONTAINER
+   ========================================= */
+
+.certifications-section {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+/* Certifications page hero spacing */
+.page-hero {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.page-hero-inner {
+    padding: 40px 0;
+}

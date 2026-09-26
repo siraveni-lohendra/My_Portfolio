@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Lohendra</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            Lohendra<span>.</span>
+        </a>
+
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="certifications.html">Certifications</a>
+
+            <!-- Resume is NOT replaced by hamburger -->
+            <a href="resume.html" class="nav-resume">Resume</a>
+
+            <a href="contact.html" class="nav-contact">Contact</a>
+
+        </nav>
+
+    </div>
+    
+
+</header>
+
+
+<main class="projects-page">
+
+<section class="projects-hero">
+
+    <p class="page-label">03 / PROJECT LAB</p>
+
+    <h1>
+        Things I
+        <span>built.</span>
+    </h1>
+
+    <p>
+        Projects are where I turn concepts into working software.
+        Each project represents something I learned, built and improved.
+    </p>
+
+</section>
+
+
+<section class="project-workspace">
+
+    <div class="project-toolbar">
+
+        <div>
+            <span>PROJECT DATABASE</span>
+            <strong>SELECT CATEGORY</strong>
+        </div>
+
+        <div class="project-filters">
+
+            <button class="project-filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="project-filter" data-filter="web">
+                Web
+            </button>
+
+            <button class="project-filter" data-filter="ai">
+                AI
+            </button>
+
+            <button class="project-filter" data-filter="fullstack">
+                Full Stack
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <article class="project-card tilt-card"
+                 data-category="web fullstack">
+
+            <div class="project-number">01</div>
+
+            <div class="project-preview preview-one">
+                <span>SECOND HAND</span>
+                <strong>VEHICLE SHOWROOM</strong>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <h2>Second Hande Vechile ShowRoom</h2>
+
+                <p>
+                    A web-based platform designed to present and explore
+                    second-hand vehicles through a structured interface.
+                </p>
+
+                <div class="project-footer">
+                    <span>WEB APPLICATION</span>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card tilt-card"
+                 data-category="ai fullstack">
+
+            <div class="project-number">02</div>
+
+            <div class="project-preview preview-two">
+                <span>UNIVERSAL</span>
+                <strong>AUDIOBOOK CREATOR</strong>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>AI</span>
+                    <span>Automation</span>
+                </div>
+
+                <h2>Universal Audiobook Creator</h2>
+
+                <p>
+                    A project focused on transforming written content into
+                    an accessible audiobook experience.
+                </p>
+
+                <div class="project-footer">
+                    <span>AI / AUTOMATION</span>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project-card tilt-card"
+                 data-category="ai fullstack">
+
+            <div class="project-number">03</div>
+
+            <div class="project-preview preview-three">
+                <span>SKILLTWIN</span>
+                <strong>AI LEARNING</strong>
+            </div>
+
+            <div class="project-info">
+
+                <div class="project-tags">
+                    <span>FastAPI</span>
+                    <span>React</span>
+                    <span>MongoDB</span>
+                </div>
+
+                <h2>SkillTwin AI</h2>
+
+                <p>
+                    An AI-powered personal learning companion designed to
+                    diagnose concept gaps and adapt learning paths.
+                </p>
+
+                <div class="project-footer">
+                    <span>SMART EDUCATION</span>
+
+                    <a href="#" class="project-link">
+                        Case Study →
+                    </a>
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            Lohendra<span>.</span>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 Lohendra Siraveni. Built with curiosity and code.
+        </div>
+
+        <div class="footer-links">
+            <a href="github.com">GitHub</a>
+            <a href="linkedin.com">LinkedIn</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="js/script.js"></script>
+
+<script>
+const filters = document.querySelectorAll(".project-filter");
+const cards = document.querySelectorAll(".project-card");
+
+filters.forEach(filter => {
+
+    filter.addEventListener("click", () => {
+
+        filters.forEach(item => item.classList.remove("active"));
+        filter.classList.add("active");
+
+        const selected = filter.dataset.filter;
+
+        cards.forEach(card => {
+
+            const categories = card.dataset.category.split(" ");
+
+            if (selected === "all" || categories.includes(selected)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
+
+
+document.querySelectorAll(".tilt-card").forEach(card => {
+
+    card.addEventListener("mousemove", event => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const rotateX = ((y / rect.height) - 0.5) * -5;
+        const rotateY = ((x / rect.width) - 0.5) * 5;
+
+        card.style.transform =
+            `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+    });
+
+});
+</script>
+
+</body>
+</html>

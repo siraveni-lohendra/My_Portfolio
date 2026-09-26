@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certifications | Lohendra</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Certification CSS -->
+    <link rel="stylesheet" href="css/certifications.css">
+
+    <style>
+
+        /* =========================================================
+           CERTIFICATION FILTER
+        ========================================================= */
+
+        .cert-category-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 42px auto 35px;
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(15, 23, 42, 0.75);
+            color: #94a3b8;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .category-item span {
+            margin-right: 7px;
+            color: #64748b;
+            font-size: 10px;
+        }
+
+        .category-item:hover {
+            color: #e2e8f0;
+            border-color: rgba(96, 165, 250, 0.35);
+        }
+
+        .category-item.active {
+            color: #ffffff;
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(96, 165, 250, 0.45);
+        }
+
+        .category-item.active span {
+            color: #60a5fa;
+        }
+
+
+        /* =========================================================
+           CERTIFICATE GRID
+        ========================================================= */
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+
+        /* =========================================================
+           CERTIFICATE CARD
+        ========================================================= */
+
+        .certificate-card {
+            width: 100%;
+            padding: 22px;
+            border: 1px solid rgba(96, 165, 250, 0.18);
+            border-radius: 15px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(30, 41, 59, 0.72),
+                    rgba(15, 23, 42, 0.82)
+                );
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .certificate-card:hover {
+            border-color: rgba(96, 165, 250, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .certificate-card.is-open {
+            border-color: rgba(96, 165, 250, 0.45);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35),
+                0 0 35px rgba(59, 130, 246, 0.08);
+        }
+
+        .certificate-card.filter-hidden {
+            display: none;
+        }
+
+
+        /* =========================================================
+           CARD TOP
+        ========================================================= */
+
+        .certificate-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .certificate-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(96, 165, 250, 0.18);
+
+            color: #60a5fa;
+            font-size: 14px;
+        }
+
+        .certificate-type {
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            border: 1px solid rgba(148, 163, 184, 0.15);
+
+            color: #64748b;
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        /* =========================================================
+           CARD CONTENT
+        ========================================================= */
+
+        .certificate-card h3 {
+            margin: 0 0 10px;
+
+            color: #e2e8f0;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .certificate-issuer {
+            margin: 0 0 5px;
+
+            color: #60a5fa;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .certificate-date {
+            margin-bottom: 15px;
+
+            color: #64748b;
+
+            font-size: 10px;
+        }
+
+        .certificate-description {
+            margin-bottom: 18px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           VIEW BUTTON
+        ========================================================= */
+
+        .view-certificate-btn {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            padding: 10px 14px;
+
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 9px;
+
+            background: rgba(59, 130, 246, 0.08);
+
+            color: #93c5fd;
+
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        .view-certificate-btn:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(96, 165, 250, 0.45);
+            color: #dbeafe;
+        }
+
+        .view-certificate-btn.active {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(248, 113, 113, 0.25);
+            color: #fca5a5;
+        }
+
+
+        /* =========================================================
+           SINGLE CERTIFICATE PREVIEW
+        ========================================================= */
+
+        .certificate-preview {
+            width: 100%;
+
+            margin-top: 22px;
+            padding: 15px;
+
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 14px;
+
+            background: rgba(2, 6, 23, 0.97);
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.35),
+                0 0 30px rgba(59, 130, 246, 0.08);
+
+            animation: certificatePreviewOpen 0.3s ease;
+        }
+
+        @keyframes certificatePreviewOpen {
+
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================================================
+           PREVIEW HEADER
+        ========================================================= */
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 12px;
+        }
+
+        .preview-header span {
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #60a5fa;
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+        }
+
+        .preview-header h4 {
+            margin: 0;
+
+            color: #e2e8f0;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           CLOSE BUTTON
+        ========================================================= */
+
+        .preview-close {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 8px;
+
+            background: rgba(30, 41, 59, 0.8);
+
+            color: #94a3b8;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        .preview-close:hover {
+            background: rgba(239, 68, 68, 0.12);
+            color: #fca5a5;
+
+            transform: rotate(90deg);
+        }
+
+
+        /* =========================================================
+           PDF FRAME
+        ========================================================= */
+
+        .preview-frame-wrapper {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+        }
+
+        .certificate-frame {
+            display: block;
+
+            width: 100%;
+            height: 600px;
+
+            border: none;
+
+            background: #ffffff;
+        }
+
+
+        /* =========================================================
+           PREVIEW FOOTER
+        ========================================================= */
+
+        .preview-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 12px 2px 2px;
+        }
+
+        .preview-footer span {
+            color: #64748b;
+
+            font-size: 9px;
+        }
+
+        .open-certificate {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 6px;
+
+            color: #60a5fa;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: color 0.25s ease;
+        }
+
+        .open-certificate:hover {
+            color: #bfdbfe;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .certificate-frame {
+                height: 480px;
+            }
+
+            .preview-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         LOADER
+    ========================================================= -->
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+        
+
+            <div class="loader-line"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Lohendra.
+            </a>
+
+            <nav id="navMenu" class="nav-menu">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="skills.html">Skills</a>
+
+                <a href="projects.html">Projects</a>
+
+                <a href="experience.html">Experience</a>
+
+                <a href="certifications.html" class="active">
+                    Certifications
+                </a>
+
+                <a href="resume.html" class="nav-resume">
+                    Resume
+                </a>
+
+                <a href="contact.html" class="nav-contact">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <button
+                type="button"
+                id="hamburger"
+                class="hamburger"
+                aria-label="Open navigation"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-inner">
+
+                <span class="hero-number">
+                    06 / CREDENTIALS
+                </span>
+
+                <h1>
+                    Certifications
+                </h1>
+
+                <p>
+                    A collection of certifications, internships,
+                    projects and professional learning achievements.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CERTIFICATIONS
+        ===================================================== -->
+
+        <section class="certifications-section">
+
+            <div class="section-container">
+
+
+                <!-- =================================================
+                     FILTER
+                ================================================= -->
+
+                <div class="cert-category-bar">
+
+                    <button
+                        type="button"
+                        class="category-item active"
+                        data-filter="all">
+
+                        <span>00</span>
+                        All
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-item"
+                        data-filter="technical">
+
+                        <span>01</span>
+                        Technical
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-item"
+                        data-filter="industry">
+
+                        <span>02</span>
+                        Industry
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-item"
+                        data-filter="professional">
+
+                        <span>03</span>
+                        Professional
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CERTIFICATE GRID
+                ================================================= -->
+
+                <div class="certificates-grid" id="certificatesGrid">
+
+
+                    <!-- =================================================
+                         01
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="industry">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                INDUSTRY
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            2-Month Web Development Industry Internship
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Geonixa
+                        </p>
+
+                        <div class="certificate-date">
+                            March – May 2026
+                        </div>
+
+                        <p class="certificate-description">
+                            Web development internship focused on
+                            frontend authentication interfaces,
+                            HTML5, CSS3, JavaScript, responsive design
+                            and form validation.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Geonixa-Certificate-GNML6473.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         02
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="industry">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROJECT
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Web Development Project –
+                            Secure Frontend Authentication Interface Design
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Geonixa
+                        </p>
+
+                        <div class="certificate-date">
+                            May 28, 2026
+                        </div>
+
+                        <p class="certificate-description">
+                            Project certification for designing a
+                            secure frontend authentication interface.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Geonixa-Certificate-GNML8336.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         03
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="industry">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-brands fa-aws"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                INDUSTRY
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            AWS Web Development Industry Specialization –
+                            Professional Badge
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            AWS Partner Network
+                        </p>
+
+                        <div class="certificate-date">
+                            May 28, 2026
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional specialization badge related
+                            to web development.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Geonixa-Certificate-AWSAPN7063.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         04
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                AI
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            AI Tools & ChatGPT Workshop
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            AI B10X
+                        </p>
+
+                        <div class="certificate-date">
+                            July 26, 2026
+                        </div>
+
+                        <p class="certificate-description">
+                            Workshop focused on AI tools and
+                            practical ChatGPT usage.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/AIB10XCertificate.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         05
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Data Structures in Python – Part 1
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Infosys
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Technical learning certification covering
+                            data structures using Python.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Data_structure_part1.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         06
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Data Structures in Python – Part 2
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Infosys
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Continuation of Python data structures
+                            and problem-solving concepts.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Data_structures_part2.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         07
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            IoT 101
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Infosys
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Introduction to Internet of Things
+                            concepts and technologies.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Iotcertificate.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         08
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            IoT 201
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Infosys
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Advanced learning continuation in
+                            Internet of Things.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/Iot_part2.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         09
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="industry">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-c"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                INDUSTRY
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            C Essentials 1
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Cisco Networking Academy / VBIT
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Fundamentals of the C programming language.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/_certificate_siravenilohendra93-gmail-com_9571dc73-b09e-44f3-a287-4a884b89c05e.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         10
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-c"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            C Essentials 2
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            Cisco Networking Academy / VBIT
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Continuation of C programming fundamentals
+                            and programming concepts.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/_certificate_siravenilohendra93-gmail-com_e6cb5708-fdc0-4b49-b3dd-41d2aafde4e3.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         11
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="technical">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                TECHNICAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Digital Application Fundamentals
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            NASSCOM
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Digital application and technology
+                            fundamentals certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/NASCOMcertificate.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         12
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional and career development
+                            learning certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_1.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         13
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional skill development certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_2.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         14
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Career readiness and professional
+                            development certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_3.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         15
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional development and
+                            employability learning.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_4.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         16
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional and soft-skill development.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_5.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         17
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Career development and professional
+                            learning certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_6.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         18
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional skill and career
+                            readiness development.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_7.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         19
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional development certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_8.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         20
+                    ================================================= -->
+
+                    <article
+                        class="certificate-card"
+                        data-category="professional">
+
+                        <div class="certificate-top">
+
+                            <div class="certificate-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <span class="certificate-type">
+                                PROFESSIONAL
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            TCS iON Career Edge Certificate
+                        </h3>
+
+                        <p class="certificate-issuer">
+                            TCS iON
+                        </p>
+
+                        <div class="certificate-date">
+                            Certificate
+                        </div>
+
+                        <p class="certificate-description">
+                            Professional learning and career
+                            development certification.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="view-certificate-btn"
+                            data-certificate="assets/certificates/LOHENDRA_SIRAVENI_9.pdf">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            View Certificate
+
+                        </button>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <p>
+                © 2026 Lohendra. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         MAIN JAVASCRIPT
+    ========================================================= -->
+
+    <script src="js/script.js"></script>
+
+
+
+    <!-- =========================================================
+         CERTIFICATE PREVIEW JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const cards = [
+                ...document.querySelectorAll(".certificate-card")
+            ];
+
+            const viewButtons = [
+                ...document.querySelectorAll(".view-certificate-btn")
+            ];
+
+            const filterButtons = [
+                ...document.querySelectorAll(".category-item")
+            ];
+
+            let openedCard = null;
+
+
+            /* =====================================================
+               RESET BUTTON
+            ===================================================== */
+
+            function resetButton(card) {
+
+                const button =
+                    card.querySelector(".view-certificate-btn");
+
+                if (!button) return;
+
+                button.classList.remove("active");
+
+                button.innerHTML = `
+                    <i class="fa-regular fa-eye"></i>
+                    View Certificate
+                `;
+
+            }
+
+
+            /* =====================================================
+               CLOSE ONE CERTIFICATE
+            ===================================================== */
+
+            function closeCertificate(card) {
+
+                if (!card) return;
+
+
+                const preview =
+                    card.querySelector(".certificate-preview");
+
+
+                if (preview) {
+
+                    const frame =
+                        preview.querySelector(".certificate-frame");
+
+
+                    /*
+                     * Remove the PDF source first.
+                     * This stops the old certificate from
+                     * remaining loaded.
+                     */
+
+                    if (frame) {
+                        frame.src = "";
+                    }
+
+
+                    /*
+                     * Completely remove the preview.
+                     */
+
+                    preview.remove();
+
+                }
+
+
+                card.classList.remove("is-open");
+
+                resetButton(card);
+
+
+                if (openedCard === card) {
+                    openedCard = null;
+                }
+
+            }
+
+
+            /* =====================================================
+               CLOSE ALL CERTIFICATES
+            ===================================================== */
+
+            function closeAllCertificates() {
+
+                cards.forEach(card => {
+
+                    const preview =
+                        card.querySelector(".certificate-preview");
+
+                    if (preview) {
+
+                        const frame =
+                            preview.querySelector(
+                                ".certificate-frame"
+                            );
+
+                        if (frame) {
+                            frame.src = "";
+                        }
+
+                        preview.remove();
+
+                    }
+
+                    card.classList.remove("is-open");
+
+                    resetButton(card);
+
+                });
+
+                openedCard = null;
+
+            }
+
+
+            /* =====================================================
+               CREATE ONE PREVIEW
+            ===================================================== */
+
+            function createPreview(card, certificate) {
+
+                /*
+                 * IMPORTANT:
+                 *
+                 * Before creating a preview,
+                 * make sure this card has no preview.
+                 */
+
+                const oldPreview =
+                    card.querySelector(".certificate-preview");
+
+
+                if (oldPreview) {
+                    oldPreview.remove();
+                }
+
+
+                const preview =
+                    document.createElement("div");
+
+
+                preview.className =
+                    "certificate-preview";
+
+
+                preview.innerHTML = `
+
+                    <div class="preview-header">
+
+                        <div>
+
+                            <span>
+                                DOCUMENT PREVIEW
+                            </span>
+
+                            <h4>
+                                Certificate Preview
+                            </h4>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="preview-close"
+                            aria-label="Close certificate preview">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="preview-frame-wrapper">
+
+                        <iframe
+                            class="certificate-frame"
+                            title="Certificate Preview"
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+
+                    <div class="preview-footer">
+
+                        <span>
+                            Certificate document preview
+                        </span>
+
+
+                        <a
+                            class="open-certificate"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            Open Full Certificate
+
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square">
+                            </i>
+
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                const frame =
+                    preview.querySelector(
+                        ".certificate-frame"
+                    );
+
+
+                const openLink =
+                    preview.querySelector(
+                        ".open-certificate"
+                    );
+
+
+                const closeButton =
+                    preview.querySelector(
+                        ".preview-close"
+                    );
+
+
+                /*
+                 * Load ONLY the clicked certificate.
+                 */
+
+                frame.src = certificate;
+
+                openLink.href = certificate;
+
+
+                /*
+                 * Close button.
+                 */
+
+                closeButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        closeCertificate(card);
+
+                    }
+                );
+
+
+                /*
+                 * Add exactly ONE preview
+                 * to the clicked card.
+                 */
+
+                card.appendChild(preview);
+
+
+                return preview;
+
+            }
+
+
+            /* =====================================================
+               OPEN CERTIFICATE
+            ===================================================== */
+
+            function openCertificate(button) {
+
+                const card =
+                    button.closest(".certificate-card");
+
+
+                if (!card) return;
+
+
+                /*
+                 * If the same certificate is already open,
+                 * clicking again closes it.
+                 */
+
+                if (openedCard === card) {
+
+                    closeCertificate(card);
+
+                    return;
+
+                }
+
+
+                /*
+                 * CLOSE EVERY OTHER CERTIFICATE FIRST.
+                 *
+                 * This guarantees that only ONE preview
+                 * exists on the page.
+                 */
+
+                closeAllCertificates();
+
+
+                const certificate =
+                    button.dataset.certificate;
+
+
+                if (!certificate) {
+
+                    console.error(
+                        "Certificate path missing."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * Create the single preview.
+                 */
+
+                createPreview(
+                    card,
+                    certificate
+                );
+
+
+                card.classList.add("is-open");
+
+
+                button.classList.add("active");
+
+
+                button.innerHTML = `
+                    <i class="fa-regular fa-eye-slash"></i>
+                    Hide Preview
+                `;
+
+
+                openedCard = card;
+
+
+                /*
+                 * Scroll to the opened certificate.
+                 */
+
+                setTimeout(() => {
+
+                    card.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }, 100);
+
+            }
+
+
+            /* =====================================================
+               VIEW BUTTON EVENTS
+            ===================================================== */
+
+            viewButtons.forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        openCertificate(button);
+
+                    }
+                );
+
+            });
+
+
+            /* =====================================================
+               FILTER
+            ===================================================== */
+
+            filterButtons.forEach(filterButton => {
+
+                filterButton.addEventListener(
+                    "click",
+                    () => {
+
+                        /*
+                         * Close certificate when
+                         * changing category.
+                         */
+
+                        closeAllCertificates();
+
+
+                        const selected =
+                            filterButton.dataset.filter;
+
+
+                        /*
+                         * Change active filter.
+                         */
+
+                        filterButtons.forEach(button => {
+
+                            button.classList.remove(
+                                "active"
+                            );
+
+                        });
+
+
+                        filterButton.classList.add(
+                            "active"
+                        );
+
+
+                        /*
+                         * Show / hide cards.
+                         */
+
+                        cards.forEach(card => {
+
+                            const category =
+                                card.dataset.category;
+
+
+                            const shouldHide =
+                                selected !== "all" &&
+                                category !== selected;
+
+
+                            card.classList.toggle(
+                                "filter-hidden",
+                                shouldHide
+                            );
+
+                        });
+
+                    }
+                );
+
+            });
+
+
+            /* =====================================================
+               ESC KEY
+            ===================================================== */
+
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (event.key === "Escape") {
+
+                        closeAllCertificates();
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               INITIAL STATE
+            ===================================================== */
+
+            closeAllCertificates();
+
+
+            /*
+             * All certificates visible initially.
+             */
+
+            cards.forEach(card => {
+
+                card.classList.remove(
+                    "filter-hidden"
+                );
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

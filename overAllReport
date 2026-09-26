@@ -1,0 +1,651 @@
+# Phase 1: Portfolio Planning & Design
+
+## Objective
+
+The goal of Phase 1 is to plan the portfolio before writing any code. A well-planned project reduces development time, minimizes errors, and results in a more professional website.
+
+---
+
+# Project Goal
+
+Build a modern, responsive, multi-page portfolio website using:
+
+* HTML5
+* CSS3
+* JavaScript (Vanilla)
+
+The portfolio should showcase:
+
+* Personal profile
+* Technical skills
+* Projects
+* Education
+* Experience
+* Certifications
+* Contact information
+
+The website should be clean, fast, responsive, and visually appealing.
+
+---
+
+# Project Vision
+
+This portfolio is intended to:
+
+* Represent my professional identity.
+* Demonstrate my web development skills.
+* Showcase my projects and achievements.
+* Serve as a resume website for internships and job opportunities.
+* Follow modern UI/UX design principles.
+
+---
+
+# Website Type
+
+**Multi-Page Portfolio Website**
+
+Reason:
+
+* Better organization
+* Easier navigation
+* More scalable
+* Professional appearance
+* Supports detailed project pages
+* Easier future expansion
+
+---
+
+# Planned Website Structure
+
+Home
+
+↓
+
+About
+
+↓
+
+Skills
+
+↓
+
+Projects
+
+↓
+
+Experience
+
+↓
+
+Certifications
+
+↓
+
+Contact
+
+(Optional)
+
+↓
+
+Blog
+
+---
+
+# Folder Structure
+
+My Portfolio/
+
+│
+
+├── index.html
+
+├── about.html
+
+├── skills.html
+
+├── projects.html
+
+├── project-details.html
+
+├── experience.html
+
+├── certifications.html
+
+├── contact.html
+
+│
+
+├── css/
+
+│ ├── style.css
+
+│ ├── navbar.css
+
+│ ├── home.css
+
+│ ├── about.css
+
+│ ├── projects.css
+
+│ ├── footer.css
+
+│ └── responsive.css
+
+│
+
+├── js/
+
+│ ├── main.js
+
+│ ├── navbar.js
+
+│ ├── animation.js
+
+│ ├── projects.js
+
+│ └── contact.js
+
+│
+
+├── assets/
+
+│ ├── images/
+
+│ ├── icons/
+
+│ ├── certificates/
+
+│ └── resume/
+
+│
+
+├── docs/
+
+│ ├── roadmap.md
+
+│ ├── errors.md
+
+│ └── changelog.md
+
+│
+
+└── README.md
+
+---
+
+# Website Pages
+
+## Home
+
+Purpose:
+
+* Introduce myself
+* Hero section
+* Featured skills
+* Featured projects
+* Navigation to other pages
+
+---
+
+## About
+
+Contains:
+
+* Personal introduction
+* Career objective
+* Education
+* Interests
+* Resume download
+
+---
+
+## Skills
+
+Contains:
+
+* Frontend Skills
+* Backend Skills
+* Programming Languages
+* Databases
+* Frameworks
+* Development Tools
+
+---
+
+## Projects
+
+Contains:
+
+* Project cards
+* Technologies used
+* GitHub repository
+* Live demo
+* View details button
+
+---
+
+## Project Details
+
+Contains:
+
+* Project overview
+* Features
+* Problem solved
+* Technologies
+* Screenshots
+* Challenges
+* Future improvements
+
+---
+
+## Experience
+
+Contains:
+
+* Education
+* Internship
+* Freelancing
+* Timeline
+* Achievements
+
+---
+
+## Certifications
+
+Contains:
+
+* Course name
+* Certificate
+* Issuing organization
+* Completion date
+
+---
+
+## Contact
+
+Contains:
+
+* Contact form
+* Email
+* LinkedIn
+* GitHub
+* Social links
+
+---
+
+# Design Theme
+
+Theme:
+
+Modern Professional Developer Portfolio
+
+Style:
+
+* Minimal
+* Dark Mode
+* Clean Layout
+* Soft Shadows
+* Smooth Animations
+* Responsive Design
+
+---
+
+# Color Palette
+
+Background:
+#020617
+
+Primary:
+#0F172A
+
+Secondary:
+#1E293B
+
+Accent:
+#3B82F6
+
+Cards:
+#111827
+
+Text:
+#F8FAFC
+
+Hover:
+#2563EB
+
+---
+
+# Typography
+
+Heading Font:
+
+Poppins
+
+Body Font:
+
+Inter
+
+---
+
+# UI Components
+
+Navigation Bar
+
+Buttons
+
+Cards
+
+Timeline
+
+Skill Cards
+
+Project Cards
+
+Footer
+
+Contact Form
+
+Social Icons
+
+---
+
+# Planned Animations
+
+* Smooth scrolling
+* Fade-in sections
+* Hover effects
+* Button animations
+* Typing effect
+* Card elevation on hover
+* Scroll reveal animation
+
+---
+
+# Responsive Design
+
+The portfolio should work correctly on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+Responsive techniques:
+
+* Flexbox
+* CSS Grid
+* Media Queries
+
+---
+
+# Performance Goals
+
+* Fast loading
+* Optimized images
+* Reusable CSS
+* Modular JavaScript
+* Semantic HTML
+* Accessible structure
+
+---
+
+# Error Documentation
+
+Create a file named:
+
+docs/errors.md
+
+Every error encountered during development should be documented.
+
+Template:
+
+Date:
+
+Page/File:
+
+Problem:
+
+Cause:
+
+Solution:
+
+Lesson Learned:
+
+This document will serve as a debugging journal and help prevent repeating mistakes.
+
+---
+
+# Development Workflow
+
+1. Planning
+2. Wireframing
+3. HTML Structure
+4. CSS Styling
+5. JavaScript Functionality
+6. Responsive Design
+7. Testing
+8. Performance Optimization
+9. Deployment
+10. Maintenance
+
+---
+
+# Phase 1 Deliverables
+
+By the end of Phase 1, the following should be completed:
+
+* Define project goals
+* Choose multi-page architecture
+* Plan folder structure
+* Decide website sections
+* Select color palette and typography
+* Plan UI components
+* Define responsive strategy
+* Create an error log template
+* Finalize the development roadmap
+
+No coding should begin until this planning phase is complete.
+
+# Portfolio Development Notes – Update 1
+
+## What We Built
+
+### 1. Project Structure
+
+We created a clean folder structure to keep the project organized.
+
+Folders:
+
+* css/
+* js/
+* assets/
+* docs/
+
+Pages:
+
+* Home
+* About
+* Skills
+* Projects
+* Experience
+* Certifications
+* Contact
+
+---
+
+## 2. Basic HTML Setup
+
+Created `index.html` with:
+
+* HTML5 structure
+* Title
+* CSS link
+* JavaScript link
+
+This is the starting point of the website.
+
+---
+
+## 3. Navigation Bar
+
+Created a professional navigation bar.
+
+Features:
+
+* Logo on the left
+* Navigation links on the right
+* Hover effect on links
+* Dark theme
+
+Purpose:
+
+* Helps users move between pages.
+
+---
+
+## 4. Hero Section
+
+Added the first section visitors see.
+
+Includes:
+
+* Name
+* Job title
+* Short introduction
+* Resume button
+* Contact button
+* Profile image
+
+Purpose:
+
+* Gives a quick introduction about you.
+
+---
+
+## 5. Hero Design
+
+Improved the hero section by adding:
+
+* Dark gradient background
+* Blue accent color
+* Rounded buttons
+* Profile image with border
+
+Purpose:
+
+* Makes the portfolio look modern and professional.
+
+---
+
+## 6. Button Hover Effect
+
+Added animation when the mouse moves over a button.
+
+Effect:
+
+* Button changes color.
+* Button moves slightly upward.
+
+Purpose:
+
+* Makes the website feel interactive.
+
+---
+
+## 7. Profile Image Hover
+
+Added an effect to the profile picture.
+
+Effect:
+
+* Image becomes slightly larger.
+* Blue glow appears.
+
+Purpose:
+
+* Makes the page more attractive.
+
+---
+
+## 8. Typing Animation
+
+Used JavaScript to display the job title one letter at a time.
+
+Example:
+
+Full Stack Web Developer
+
+Purpose:
+
+* Adds a modern look.
+* Shows basic JavaScript skills.
+
+---
+
+# Files Updated
+
+* index.html
+* css/style.css
+* js/script.js
+
+---
+
+# Key Concepts Learned
+
+* HTML page structure
+* Linking CSS and JavaScript
+* Navigation bar
+* Flexbox layout
+* Buttons
+* Hover effects
+* CSS transitions
+* Gradient backgrounds
+* JavaScript DOM manipulation
+* Simple typing animation
+
+---
+
+# Common Errors
+
+1. CSS not loading
+
+* Check the CSS file path.
+
+2. JavaScript not working
+
+* Make sure `script.js` is linked before `</body>`.
+
+3. Image not showing
+
+* Check the image path and filename.
+
+4. Typing animation not working
+
+* Verify the HTML contains:
+  `<span id="typing"></span>`
+
+---
+
+# Progress
+
+✅ Project structure
+
+✅ HTML setup
+
+✅ Navigation bar
+
+✅ Hero section
+
+✅ Hero styling
+
+✅ Hover effects
+
+✅ Typing animation
+
+**Next:** Build the About page.
+<p class="certificate-id">
+    ID: AWSAPN7063
+</p>
+<p class="date">
+    Issued: July 2026
+</p>
