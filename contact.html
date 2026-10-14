@@ -22,10 +22,17 @@
             Lohendra<span>.</span>
         </a>
 
-        <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+        <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false">
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
         <nav class="nav-menu" id="navMenu">
@@ -37,7 +44,6 @@
             <a href="experience.html">Experience</a>
             <a href="certifications.html">Certifications</a>
 
-            <!-- Resume is NOT replaced by hamburger -->
             <a href="resume.html" class="nav-resume">Resume</a>
 
             <a href="contact.html" class="nav-contact">Contact</a>
@@ -45,165 +51,200 @@
         </nav>
 
     </div>
-    
 
 </header>
 
 
 <main class="contact-page">
 
-<section class="contact-hero">
+    <section class="contact-hero">
 
-    <p class="page-label">06 / CONNECTION</p>
+        <p class="page-label">06 / CONNECTION</p>
 
-    <h1>
-        Let's build
-        <span>something useful.</span>
-    </h1>
+        <h1>
+            Let's build
+            <span>something useful.</span>
+        </h1>
 
-    <p>
-        Have a project idea, opportunity or simply want to connect?
-        Send me a message.
-    </p>
+        <p>
+            Have a project idea, opportunity or simply want to connect?
+            Send me a message.
+        </p>
 
-</section>
-
-
-<section class="contact-workspace">
+    </section>
 
 
-    <div class="contact-info">
-
-        <div class="contact-card">
-
-            <span class="contact-index">01</span>
-
-            <p>EMAIL</p>
-
-            <a href="mailto:siravenilohendra93@gmail.com">
-                siravenilohendra93@gmail.com
-            </a>
-
-        </div>
+    <section class="contact-workspace">
 
 
-        <div class="contact-card">
+        <div class="contact-info">
 
-            <span class="contact-index">02</span>
+            <div class="contact-card">
 
-            <p>PROFILES</p>
+                <span class="contact-index">01</span>
 
-            <div class="contact-links">
+                <p>EMAIL</p>
 
-                <a href="https://github.com/siraveni-lohendra"
-                   target="_blank">
-                    GitHub ↗
+                <a href="mailto:siravenilohendra93@gmail.com">
+                    siravenilohendra93@gmail.com
                 </a>
 
-                <a href="https://www.linkedin.com/in/lohendra-siraveni-139387328/"
-                   target="_blank">
-                    LinkedIn ↗
-                </a>
+            </div>
+
+
+            <div class="contact-card">
+
+                <span class="contact-index">02</span>
+
+                <p>PROFILES</p>
+
+                <div class="contact-links">
+
+                    <a
+                        href="https://github.com/siraveni-lohendra"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        GitHub ↗
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/lohendra-siraveni-139387328/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LinkedIn ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-note">
+
+                <span>OPEN TO</span>
+
+                <h2>
+                    Internships<br>
+                    Projects<br>
+                    Opportunities
+                </h2>
 
             </div>
 
         </div>
 
 
-        <div class="contact-note">
+        <div class="contact-form-panel">
 
-            <span>OPEN TO</span>
+            <div class="form-heading">
 
-            <h2>
-                Internships<br>
-                Projects<br>
-                Opportunities
-            </h2>
+                <span>MESSAGE TERMINAL</span>
 
-        </div>
+                <p>
+                    Tell me what you are working on.
+                </p>
 
-    </div>
+            </div>
 
 
-    <div class="contact-form-panel">
+            <form id="contactForm">
 
-        <div class="form-heading">
+                <div class="input-row">
 
-            <span>MESSAGE TERMINAL</span>
+                    <div class="input-group">
 
-            <p>
-                Tell me what you are working on.
-            </p>
+                        <label for="contactName">
+                            Your Name
+                        </label>
 
-        </div>
+                        <input
+                            type="text"
+                            id="contactName"
+                            name="from_name"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required>
+
+                    </div>
 
 
-        <form id="contactForm">
+                    <div class="input-group">
 
-            <div class="input-row">
+                        <label for="contactEmail">
+                            Your Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            name="from_email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required>
+
+                    </div>
+
+                </div>
+
 
                 <div class="input-group">
-                    <label>Your Name</label>
+
+                    <label for="contactSubject">
+                        Subject
+                    </label>
+
                     <input
                         type="text"
-                        id="contactName"
-                        placeholder="Enter your name"
+                        id="contactSubject"
+                        name="subject"
+                        placeholder="What would you like to discuss?"
                         required>
+
                 </div>
+
 
                 <div class="input-group">
-                    <label>Your Email</label>
-                    <input
-                        type="email"
-                        id="contactEmail"
-                        placeholder="you@example.com"
-                        required>
+
+                    <label for="contactMessage">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="contactMessage"
+                        name="message"
+                        rows="7"
+                        placeholder="Write your message..."
+                        required></textarea>
+
                 </div>
 
-            </div>
+
+                <button
+                    type="submit"
+                    class="send-btn">
+                    Send Message →
+                </button>
 
 
-            <div class="input-group">
+                <p
+                    class="form-note"
+                    id="form-status"
+                    role="status"
+                    aria-live="polite">
 
-                <label>Subject</label>
+                    Gmail will open with your message ready to send.
 
-                <input
-                    type="text"
-                    id="contactSubject"
-                    placeholder="What would you like to discuss?"
-                    required>
+                </p>
 
-            </div>
+            </form>
 
+        </div>
 
-            <div class="input-group">
-
-                <label>Message</label>
-
-                <textarea
-                    id="contactMessage"
-                    rows="7"
-                    placeholder="Write your message..."
-                    required></textarea>
-
-            </div>
-
-
-            <button type="submit" class="send-btn">
-                Open Email →
-            </button>
-
-            <p class="form-note">
-                Your message will open in your default email application.
-            </p>
-
-        </form>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
+
+
 <footer class="site-footer">
 
     <div class="footer-container">
@@ -217,9 +258,23 @@
         </div>
 
         <div class="footer-links">
-            <a href="github.com">GitHub</a>
-            <a href="linkedin.com">LinkedIn</a>
-            <a href="contact.html">Contact</a>
+
+            <a href="https://github.com/siraveni-lohendra"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/lohendra-siraveni-139387328/"
+               target="_blank"
+               rel="noopener noreferrer">
+                LinkedIn
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
         </div>
 
     </div>
@@ -227,40 +282,11 @@
 </footer>
 
 
+<!-- EmailJS Browser SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Portfolio JavaScript -->
 <script src="js/script.js"></script>
-
-<script>
-
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-
-    e.preventDefault();
-
-    const name =
-        document.getElementById("contactName").value;
-
-    const email =
-        document.getElementById("contactEmail").value;
-
-    const subject =
-        document.getElementById("contactSubject").value;
-
-    const message =
-        document.getElementById("contactMessage").value;
-
-
-    const body =
-        `Hello Lohendra,%0D%0A%0D%0A` +
-        `${message}%0D%0A%0D%0A` +
-        `Name: ${name}%0D%0A` +
-        `Email: ${email}`;
-
-
-    window.location.href =
-        `mailto:siravenilohendra93@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-});
-
-</script>
 
 </body>
 </html>

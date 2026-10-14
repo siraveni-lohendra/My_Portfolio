@@ -1,49 +1,151 @@
-/* =========================================
-   LOHENDRA PORTFOLIO
-   GLOBAL JAVASCRIPT
-========================================= */
+/*
+=========================================================
+LOHENDRA PORTFOLIO
+GLOBAL JAVASCRIPT
+=========================================================
+*/
+
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
+    /* =====================================
+       EMAILJS CONTACT FORM
+       Sends message without leaving contact.html
+    ===================================== */
+
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+
+        const formStatus = document.getElementById("form-status");
+        const submitButton = contactForm.querySelector(".send-btn");
+        const honeypot = document.getElementById("website");
+
+        emailjs.init({
+            publicKey: "jyx81-4t0kITXs4Ex"
+        });
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (honeypot && honeypot.value.trim() !== "") {
+                formStatus.textContent = "Request blocked.";
+                formStatus.dataset.state = "error";
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+
+            formStatus.textContent = "Sending your message...";
+            formStatus.dataset.state = "sending";
+
+            emailjs.sendForm(
+                "service_5ou4az8",
+                "template_f079j4t",
+                contactForm
+            )
+            .then(function () {
+                contactForm.reset();
+                formStatus.textContent =
+                    "✓ Message sent successfully! Thank you for contacting me.";
+                formStatus.dataset.state = "success";
+                submitButton.disabled = false;
+                submitButton.textContent = "Message Sent ✓";
+
+                setTimeout(function () {
+                    submitButton.textContent = "Send Message →";
+                }, 3000);
+            })
+            .catch(function (error) {
+                console.error("EmailJS error:", error);
+                formStatus.textContent =
+                    "✕ Unable to send your message. Please try again.";
+                formStatus.dataset.state = "error";
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message →";
+            });
+        });
+    }
+
+
 
     /* =====================================
        MOBILE NAVIGATION
     ===================================== */
 
-    const menuBtn = document.getElementById("hamburger") || document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navMenu") || document.querySelector(".nav-links");
+    const menuBtn =
+        document.getElementById("hamburger") ||
+        document.getElementById("menuBtn");
+
+    const navLinks =
+        document.getElementById("navMenu") ||
+        document.querySelector(".nav-links");
+
 
     if (menuBtn && navLinks) {
 
         menuBtn.addEventListener("click", () => {
 
-            const isOpen = navLinks.classList.toggle("active");
-            navLinks.classList.toggle("open", isOpen);
-            menuBtn.classList.toggle("active", isOpen);
-            menuBtn.setAttribute("aria-expanded", String(isOpen));
+            const isOpen =
+                navLinks.classList.toggle("active");
+
+            navLinks.classList.toggle(
+                "open",
+                isOpen
+            );
+
+            menuBtn.classList.toggle(
+                "active",
+                isOpen
+            );
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
 
         });
 
 
-        navLinks.querySelectorAll("a").forEach(link => {
+        navLinks
+            .querySelectorAll("a")
+            .forEach(link => {
 
-            link.addEventListener("click", () => {
+                link.addEventListener("click", () => {
 
-                navLinks.classList.remove("active", "open");
-                menuBtn.classList.remove("active");
-                menuBtn.setAttribute("aria-expanded", "false");
+                    navLinks.classList.remove(
+                        "active",
+                        "open"
+                    );
+
+                    menuBtn.classList.remove(
+                        "active"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
 
             });
 
-        });
-
     }
+
 
 
     /* =====================================
        HOME TYPING ANIMATION
     ===================================== */
 
-    const typingText = document.getElementById("typingText");
+    const typingText =
+        document.getElementById("typingText");
+
 
     if (typingText) {
 
@@ -55,13 +157,20 @@ document.addEventListener("DOMContentLoaded", () => {
             "Continuous Learner"
         ];
 
+
         let phraseIndex = 0;
+
         let characterIndex = 0;
+
         let deleting = false;
 
+
         const typeSpeed = 75;
+
         const deleteSpeed = 40;
+
         const pauseAfterTyping = 1700;
+
         const pauseAfterDeleting = 450;
 
 
@@ -74,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!deleting) {
 
                 characterIndex++;
+
 
                 typingText.textContent =
                     currentPhrase.substring(
@@ -95,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     return;
+
                 }
 
 
@@ -103,9 +214,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     typeSpeed
                 );
 
+
             } else {
 
                 characterIndex--;
+
 
                 typingText.textContent =
                     currentPhrase.substring(
@@ -122,12 +235,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         (phraseIndex + 1) %
                         phrases.length;
 
+
                     setTimeout(
                         typeLoop,
                         pauseAfterDeleting
                     );
 
                     return;
+
                 }
 
 
@@ -135,12 +250,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     typeLoop,
                     deleteSpeed
                 );
+
             }
+
         }
 
 
         typeLoop();
+
     }
+
 
 
     /* =====================================
@@ -176,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     event.clientX -
                     rect.left;
 
+
                 const y =
                     event.clientY -
                     rect.top;
@@ -183,6 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const centerX =
                     rect.width / 2;
+
 
                 const centerY =
                     rect.height / 2;
@@ -210,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     rotateY(${rotateY}deg)
                     translateZ(20px)
                     `;
+
             }
         );
 
@@ -223,10 +345,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 developerCard.style.transform =
                     "";
+
             }
         );
 
     }
+
 
 
     /* =====================================
@@ -258,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             obs.unobserve(
                                 entry.target
                             );
+
                         }
 
                     });
@@ -284,6 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =====================================
        CLOSE MOBILE MENU ON OUTSIDE CLICK
     ===================================== */
@@ -296,7 +422,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 !navLinks ||
                 !menuBtn
             ) {
+
                 return;
+
             }
 
 
@@ -319,227 +447,398 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+
+
 /* =========================================================
    CERTIFICATE PREVIEW + FILTER
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    const certificateCards = document.querySelectorAll(".certificate-card");
-    const viewButtons = document.querySelectorAll(".view-certificate-btn");
-    const categoryButtons = document.querySelectorAll(".category-item");
-
-    let openedCard = null;
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
 
-    /* =====================================================
-       CERTIFICATE PREVIEW
-    ===================================================== */
+        const certificateCards =
+            document.querySelectorAll(
+                ".certificate-card"
+            );
 
-    function closeCertificatePreview() {
 
-        if (!openedCard) return;
+        const viewButtons =
+            document.querySelectorAll(
+                ".view-certificate-btn"
+            );
 
-        const preview = openedCard.querySelector(".certificate-preview");
 
-        if (preview) {
-            preview.remove();
+        const categoryButtons =
+            document.querySelectorAll(
+                ".category-item"
+            );
+
+
+        let openedCard = null;
+
+
+
+        /* =====================================================
+           CERTIFICATE PREVIEW
+        ===================================================== */
+
+
+        function closeCertificatePreview() {
+
+            if (!openedCard) return;
+
+
+            const preview =
+                openedCard.querySelector(
+                    ".certificate-preview"
+                );
+
+
+            if (preview) {
+
+                preview.remove();
+
+            }
+
+
+            openedCard.classList.remove(
+                "is-open"
+            );
+
+
+            openedCard = null;
+
         }
 
-        openedCard.classList.remove("is-open");
-
-        openedCard = null;
-    }
 
 
-    function openCertificatePreview(card, button) {
+        function openCertificatePreview(
+            card,
+            button
+        ) {
 
-        /* Close previous certificate */
-        if (openedCard && openedCard !== card) {
-            closeCertificatePreview();
+
+            /* Close previous certificate */
+
+            if (
+                openedCard &&
+                openedCard !== card
+            ) {
+
+                closeCertificatePreview();
+
+            }
+
+
+            /* If same certificate is clicked again, close it */
+
+            if (openedCard === card) {
+
+                closeCertificatePreview();
+
+                return;
+
+            }
+
+
+            const pdfPath =
+                button.getAttribute(
+                    "data-certificate"
+                );
+
+
+            if (!pdfPath) {
+
+                console.error(
+                    "Certificate PDF path not found."
+                );
+
+                return;
+
+            }
+
+
+            const titleElement =
+                card.querySelector(
+                    ".certificate-content h3"
+                );
+
+
+            const certificateTitle =
+                titleElement
+                    ? titleElement.textContent.trim()
+                    : "Certificate Preview";
+
+
+
+            /* Create preview */
+
+            const preview =
+                document.createElement(
+                    "div"
+                );
+
+
+            preview.className =
+                "certificate-preview";
+
+
+            preview.innerHTML = `
+
+                <div class="certificate-preview-header">
+
+                    <span>
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                        Certificate Preview
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="certificate-preview-close"
+                        aria-label="Close certificate preview">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    src="${pdfPath}"
+                    title="${certificateTitle}"
+                    loading="lazy">
+                </iframe>
+
+            `;
+
+
+            /* Add preview inside selected card */
+
+            card.appendChild(preview);
+
+
+            card.classList.add(
+                "is-open"
+            );
+
+
+            openedCard = card;
+
+
+
+            /* Close button */
+
+            const closeButton =
+                preview.querySelector(
+                    ".certificate-preview-close"
+                );
+
+
+            closeButton.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    closeCertificatePreview();
+
+                }
+            );
+
+
+
+            /* Move selected certificate into view */
+
+            setTimeout(() => {
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
         }
 
-        /* If same certificate is clicked again, close it */
-        if (openedCard === card) {
-            closeCertificatePreview();
-            return;
-        }
-
-        const pdfPath = button.getAttribute("data-certificate");
-
-        if (!pdfPath) {
-            console.error("Certificate PDF path not found.");
-            return;
-        }
-
-        const titleElement = card.querySelector(".certificate-content h3");
-
-        const certificateTitle = titleElement
-            ? titleElement.textContent.trim()
-            : "Certificate Preview";
 
 
-        /* Create preview */
-        const preview = document.createElement("div");
+        /* =====================================================
+           VIEW CERTIFICATE BUTTONS
+        ===================================================== */
 
-        preview.className = "certificate-preview";
+        viewButtons.forEach(
+            button => {
 
-        preview.innerHTML = `
-            <div class="certificate-preview-header">
+                button.addEventListener(
+                    "click",
+                    (event) => {
 
-                <span>
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Certificate Preview
-                </span>
+                        event.preventDefault();
 
-                <button
-                    type="button"
-                    class="certificate-preview-close"
-                    aria-label="Close certificate preview"
-                >
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-            </div>
-
-            <iframe
-                src="${pdfPath}"
-                title="${certificateTitle}"
-                loading="lazy"
-            ></iframe>
-        `;
+                        event.stopPropagation();
 
 
-        /* Add preview inside selected card */
-        card.appendChild(preview);
-
-        card.classList.add("is-open");
-
-        openedCard = card;
+                        const card =
+                            button.closest(
+                                ".certificate-card"
+                            );
 
 
-        /* Close button */
-        const closeButton =
-            preview.querySelector(".certificate-preview-close");
-
-        closeButton.addEventListener("click", (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            closeCertificatePreview();
-
-        });
+                        if (!card) return;
 
 
-        /* Move selected certificate into view */
-        setTimeout(() => {
+                        openCertificatePreview(
+                            card,
+                            button
+                        );
 
-            card.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+                    }
+                );
 
-        }, 100);
-
-    }
-
-
-    /* =====================================================
-       VIEW CERTIFICATE BUTTONS
-    ===================================================== */
-
-    viewButtons.forEach(button => {
-
-        button.addEventListener("click", (event) => {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            const card = button.closest(".certificate-card");
-
-            if (!card) return;
-
-            openCertificatePreview(card, button);
-
-        });
-
-    });
+            }
+        );
 
 
-    /* =====================================================
-       CERTIFICATE FILTER
-    ===================================================== */
 
-    categoryButtons.forEach(button => {
+        /* =====================================================
+           CERTIFICATE FILTER
+        ===================================================== */
 
-        button.addEventListener("click", () => {
+        categoryButtons.forEach(
+            button => {
 
-            const selectedCategory =
-                button.getAttribute("data-filter");
-
-
-            /* Close currently opened certificate */
-            closeCertificatePreview();
+                button.addEventListener(
+                    "click",
+                    () => {
 
 
-            /* Change active button */
-            categoryButtons.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            button.classList.add("active");
+                        const selectedCategory =
+                            button.getAttribute(
+                                "data-filter"
+                            );
 
 
-            /* Show / hide cards */
-            certificateCards.forEach(card => {
+                        /* Close currently opened certificate */
 
-                const cardCategory =
-                    card.getAttribute("data-category");
+                        closeCertificatePreview();
 
+
+                        /* Change active button */
+
+                        categoryButtons.forEach(
+                            item => {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        /* Show / hide cards */
+
+                        certificateCards.forEach(
+                            card => {
+
+                                const cardCategory =
+                                    card.getAttribute(
+                                        "data-category"
+                                    );
+
+
+                                if (
+                                    selectedCategory === "all" ||
+                                    cardCategory === selectedCategory
+                                ) {
+
+                                    card.style.display =
+                                        "";
+
+
+                                    requestAnimationFrame(
+                                        () => {
+
+                                            card.classList.remove(
+                                                "filter-hidden"
+                                            );
+
+                                        }
+                                    );
+
+
+                                } else {
+
+                                    card.classList.add(
+                                        "filter-hidden"
+                                    );
+
+
+                                    setTimeout(
+                                        () => {
+
+                                            if (
+                                                card.classList.contains(
+                                                    "filter-hidden"
+                                                )
+                                            ) {
+
+                                                card.style.display =
+                                                    "none";
+
+                                            }
+
+                                        },
+                                        250
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ESC KEY CLOSE
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
 
                 if (
-                    selectedCategory === "all" ||
-                    cardCategory === selectedCategory
+                    event.key === "Escape"
                 ) {
 
-                    card.style.display = "";
-
-                    requestAnimationFrame(() => {
-                        card.classList.remove("filter-hidden");
-                    });
-
-                } else {
-
-                    card.classList.add("filter-hidden");
-
-                    setTimeout(() => {
-
-                        if (card.classList.contains("filter-hidden")) {
-                            card.style.display = "none";
-                        }
-
-                    }, 250);
+                    closeCertificatePreview();
 
                 }
 
-            });
+            }
+        );
 
-        });
-
-    });
-
-
-    /* =====================================================
-       ESC KEY CLOSE
-    ===================================================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key === "Escape") {
-            closeCertificatePreview();
-        }
-
-    });
-
-});
+    }
+);

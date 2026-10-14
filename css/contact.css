@@ -161,6 +161,15 @@
     padding: 35px;
 }
 
+.honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
 
 .form-heading {
     margin-bottom: 30px;
@@ -271,6 +280,12 @@
     transform: translateY(-2px);
 }
 
+.send-btn:disabled {
+    cursor: wait;
+    opacity: .7;
+    transform: none;
+}
+
 
 .form-note {
 
@@ -281,6 +296,18 @@
     color: #64748b;
 
     font-size: 10px;
+}
+
+.form-note[data-state="sending"] {
+    color: #60a5fa;
+}
+
+.form-note[data-state="success"] {
+    color: #4ade80;
+}
+
+.form-note[data-state="error"] {
+    color: #f87171;
 }
 
 
